@@ -40,7 +40,20 @@ Using Pose Saliency Annotation to train our PoseRAC, we achieve new state-of-the
 | VideoSwinTransformer | 0.576 | 0.132 |    149   |
 |     Huang et al.     | 0.527 | 0.159 |    156   |
 |       TransRAC       | 0.443 | 0.291 |    200   |
-|     **PoseRAC(Ours)**    | **0.236** | **0.560** |    **20**    |
+|     PoseRAC   | 0.236 | 0.560 |    20   |
+| ESCounts | 0.213 | 0.563 | - |
+
+
+| Risk                                      | Mitigation Strategy                                                                                   |
+|-------------------------------------------|------------------------------------------------------------------------------------------------------|
+| Regression not working for bites             | - Try classification, e.g. "1" instead of 1                                                                               |
+| Bite Counting not working           | - Limit scope to only animal behavior classification (already done)                                               |
+| ***Dataset too small***                        | - Get camera with object detection deployed ASAP<br>- Use augmentation techniques<br> - Scrape internet for additional data<br> - Benchmark only on available datasets |
+| System breaking bags                     | - Add gap/catch-up weeks<br> - Keep the pipeline simple                                               |
+| Scope too big/not enough time            | - Discard non-core development (Bite counting is core) <br> - Use dataset subsets for shorter training times and quicker benchmarks                 |
+| Unplanned events/emergencies            | - Add documentation for continuity<br> - Start small to identify potential problems                    |
+
+
 
 ## RepCount-pose: A new version of RepCount dataset with pose-level annotations
 We propose a novel **Pose Saliency Annotation** that addresses the lack of annotations for salient poses in current datasets. As figure below shows, take front raise action as an example, we pre-define two salient poses for each action and annotate the frame indices where these poses occur for all videos in the training set, creating new annotation files for our pose-level method to train on. We apply this approach to *RepCount*, and create a new annotated version called ***RepCount-pose***.
